@@ -8,7 +8,7 @@ data class MostPopularDto(
     @SerializedName("country")
     val country: String,
     @SerializedName("end_date")
-    val endDate: String,
+    val endDate: String?,
     @SerializedName("id")
     val id: Int,
     @SerializedName("image_thumbnail_path")
@@ -24,7 +24,7 @@ data class MostPopularDto(
  fun MostPopularDto.toMostPopular(): MostPopular{
      return MostPopular(
          country = country,
-         endDate = endDate,
+         endDate = endDate?: "Inconnu",
          id = id,
          imageThumbnailPath = imageThumbnailPath,
          name = name,

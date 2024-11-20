@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.esiea.tvshow"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.esiea.tvshow"
         minSdk = 25
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
