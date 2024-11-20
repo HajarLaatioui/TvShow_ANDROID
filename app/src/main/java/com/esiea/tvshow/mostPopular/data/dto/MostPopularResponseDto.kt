@@ -1,6 +1,7 @@
 package com.esiea.tvshow.mostPopular.data.dto
 
 
+import com.esiea.tvshow.mostPopular.domain.model.MostPopularResponse
 import com.google.gson.annotations.SerializedName
 
 data class MostPopularResponseDto(
@@ -13,3 +14,12 @@ data class MostPopularResponseDto(
     @SerializedName("tv_shows")
     val tvShows: List<MostPopularDto>
 )
+
+fun MostPopularResponseDto.toMostPopularResponse(): MostPopularResponse {
+    return MostPopularResponse(
+        page = page,
+        pages = pages,
+        total = total,
+        tvShows = tvShows
+    )
+}
