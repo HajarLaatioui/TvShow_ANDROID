@@ -44,5 +44,5 @@ data class ShowDetailsDto(
     @SerializedName("youtube_link")
     val youtube_link: Any,
     @SerializedName("episodes")
-    val episodes: List<EpisodeDtoItem>,
+    val episodes: List<EpisodeDto>,
 )
