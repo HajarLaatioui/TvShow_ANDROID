@@ -30,13 +30,16 @@ import com.esiea.tvshow.mostPopular.domain.model.MostPopular
 
 @Composable
  fun FilmItem(modifier: Modifier = Modifier,
-              mostPopular: MostPopular
+              mostPopular: MostPopular,
+              onclickOnMostPopular : (MostPopular) -> Unit
 ) {
        Card(
            colors = CardDefaults.cardColors(
                containerColor = Color.White
            ),
-           onClick = {},
+           onClick = {
+               onclickOnMostPopular(mostPopular)
+           },
 
        ) {
          Row(

@@ -40,7 +40,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 @Composable
  fun HomeScreen(
     mostPopularViewModel: MostPopularViewModel = hiltViewModel(),
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onclickOnMostPopularScreen : (MostPopular) -> Unit
  ) {
     val stateResult = mostPopularViewModel.mostPopularState.value
 
@@ -154,7 +155,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
            items(stateResult.mostPopular){
 
                 mostPopular : MostPopular ->
-               FilmItem( mostPopular = mostPopular)
+               FilmItem( mostPopular = mostPopular){
+                    mostPopular -> onclickOnMostPopularScreen(mostPopular)
+               }
 
            }
          }
