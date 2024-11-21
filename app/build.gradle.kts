@@ -92,4 +92,7 @@ dependencies {
     implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.3")
 // Splash Screen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+
+    implementation ("androidx.constraintlayout:constraintlayout-compose:1.0.1")
 }

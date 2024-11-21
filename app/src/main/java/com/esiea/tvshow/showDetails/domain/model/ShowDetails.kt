@@ -3,11 +3,11 @@ package com.esiea.tvshow.showDetails.domain.model
 import java.io.Serializable
 
 data class ShowDetails(
-    val countdown: Any,
+    val countdown: Any?,
     val country: String,
     val description: String,
     val description_source: String,
-    val end_date: Any,
+    val end_date: Any?,
     val genres: List<String>,
     val id: Int,
     val image_path: String,
@@ -22,8 +22,6 @@ data class ShowDetails(
     val start_date: String,
     val status: String,
     val url: String,
-    val youtube_link: Any
-): Serializable
-
-
-
+    val youtube_link: Any?,
+    val episodes: List<Episode>
+) : Serializable

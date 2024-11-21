@@ -1,14 +1,14 @@
-package com.formation.mynews.getNews.data.remote.repository
+package com.esiea.tvshow.showDetails.data.repository
 
-
-import com.esiea.tvshow.showDetails.data.dto.ShowDetailsDto
-import com.esiea.tvshow.showDetails.domain.repository.ShowDetailsRepository
+import com.esiea.tvshow.showDetails.data.dto.ShowDetailsResponseDto
 import com.esiea.tvshow.showDetails.data.service.ShowDetailsApiService
+import com.esiea.tvshow.showDetails.domain.repository.ShowDetailsRepository
 import javax.inject.Inject
 
-class ShowDetailsRepositoryImpl @Inject constructor (
+class ShowDetailsRepositoryImpl @Inject constructor(
     private val showDetailsApiService: ShowDetailsApiService
 ) : ShowDetailsRepository {
-    override suspend fun getShowDetails(showId: Int): ShowDetailsDto =
-        showDetailsApiService.getShowDetails(showId)
+    override suspend fun getShowDetails(showId: Int): ShowDetailsResponseDto {
+        return showDetailsApiService.getShowDetails(showId)
     }
+}

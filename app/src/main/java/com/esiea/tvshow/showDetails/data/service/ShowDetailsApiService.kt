@@ -1,13 +1,12 @@
 package com.esiea.tvshow.showDetails.data.service
 
-
-import com.esiea.tvshow.showDetails.data.dto.ShowDetailsDto
+import com.esiea.tvshow.showDetails.data.dto.ShowDetailsResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface ShowDetailsApiService {
-    @GET(ApiConstant.SHOWDETAILS)
+    @GET("show-details")
     suspend fun getShowDetails(
-        @Query(ApiConstant.SHOW_ID) showId: Int
-    ): ShowDetailsDto
+        @Query("id") showId: Int
+    ): ShowDetailsResponseDto
 }

@@ -1,5 +1,7 @@
 package com.esiea.tvshow.mostPopular.presentation.activity
 
+import DetailsActivity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -24,10 +26,15 @@ class MainActivity : ComponentActivity() {
 //        enableEdgeToEdge()
         setContent {
             TvShowTheme {
+
                 val viewModel: MostPopularViewModel = hiltViewModel()
 
-                HomeScreen(viewModel)
-            }
+                HomeScreen(viewModel){
+                        mostPopular ->
+                    var intent = Intent(this, DetailsActivity::class.java)
+//               intent.putExtra("showId", mostPopular.id)
+                    startActivity( intent)
+                }            }
         }
     }
 }

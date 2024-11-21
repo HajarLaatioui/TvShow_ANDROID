@@ -29,68 +29,71 @@ import coil3.compose.AsyncImage
 import com.esiea.tvshow.mostPopular.domain.model.MostPopular
 
 @Composable
- fun FilmItem(modifier: Modifier = Modifier,
-              mostPopular: MostPopular
+fun FilmItem(modifier: Modifier = Modifier,
+             mostPopular: MostPopular,
+             onclickOnMostPopular : (MostPopular) -> Unit
 ) {
-       Card(
-           colors = CardDefaults.cardColors(
-               containerColor = Color.White
-           ),
-           onClick = {},
+    Card(
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        ),
+        onClick = {
+            onclickOnMostPopular(mostPopular)
+        },
 
-       ) {
-         Row(
-             horizontalArrangement = Arrangement.SpaceAround,
-              modifier = Modifier.fillMaxSize()
-         ) {
-             AsyncImage(
-                 model = mostPopular.imageThumbnailPath,
-                 contentDescription = null,
-                 contentScale = ContentScale.FillHeight,
-                 modifier = Modifier
-                     .height(300.dp)
-                     .fillMaxWidth(0.5f)
-             )
-             Column (
-                 horizontalAlignment = Alignment.CenterHorizontally,
-                 verticalArrangement = Arrangement.spacedBy(10.dp),
-                 modifier = Modifier.fillMaxSize().padding(10.dp)
+        ) {
+        Row(
+            horizontalArrangement = Arrangement.SpaceAround,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            AsyncImage(
+                model = mostPopular.imageThumbnailPath,
+                contentDescription = null,
+                contentScale = ContentScale.FillHeight,
+                modifier = Modifier
+                    .height(300.dp)
+                    .fillMaxWidth(0.5f)
+            )
+            Column (
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(10.dp),
+                modifier = Modifier.fillMaxSize().padding(10.dp)
 
-             ){
-                 Text(
-                     text = mostPopular.name,
-                     fontWeight = FontWeight.Bold,
-                     maxLines = 2,
-                     fontSize = 20.sp,
-                     textAlign = TextAlign.Center,
-                 )
-                 Text(
-                     text = "pays : ${mostPopular.country}",
-                     maxLines = 1,
-                     fontSize = 16.sp,
-                     textAlign = TextAlign.Center,
-                 )
-                 Text(
-                     text = "Sortie : ${mostPopular.startDate}",
-                     maxLines = 1,
-                     fontSize = 16.sp,
-                     textAlign = TextAlign.Center,
-                 )
-                 Text(
-                     text = "Fin : ${mostPopular.endDate}",
-                     maxLines = 1,
-                     fontSize = 16.sp,
-                     textAlign = TextAlign.Center,
-                 )
+            ){
+                Text(
+                    text = mostPopular.name,
+                    fontWeight = FontWeight.Bold,
+                    maxLines = 2,
+                    fontSize = 20.sp,
+                    textAlign = TextAlign.Center,
+                )
+                Text(
+                    text = "pays : ${mostPopular.country}",
+                    maxLines = 1,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Center,
+                )
+                Text(
+                    text = "Sortie : ${mostPopular.startDate}",
+                    maxLines = 1,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Center,
+                )
+                Text(
+                    text = "Fin : ${mostPopular.endDate}",
+                    maxLines = 1,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Center,
+                )
 
-                 Text(
-                     text = "Status : ${mostPopular.status}",
-                     maxLines = 1,
-                     fontSize = 16.sp,
-                     textAlign = TextAlign.Center,
-                 )
-             }
+                Text(
+                    text = "Status : ${mostPopular.status}",
+                    maxLines = 1,
+                    fontSize = 16.sp,
+                    textAlign = TextAlign.Center,
+                )
+            }
 
-         }
-       }
+        }
+    }
 }

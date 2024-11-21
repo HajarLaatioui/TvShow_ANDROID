@@ -38,125 +38,128 @@ import com.esiea.tvshow.ui.theme.yellow
 import dagger.hilt.android.lifecycle.HiltViewModel
 
 @Composable
- fun HomeScreen(
+fun HomeScreen(
     mostPopularViewModel: MostPopularViewModel = hiltViewModel(),
-    modifier: Modifier = Modifier
- ) {
+    modifier: Modifier = Modifier,
+    onclickOnMostPopularScreen : (MostPopular) -> Unit
+) {
     val stateResult = mostPopularViewModel.mostPopularState.value
 
-     Column(
+    Column(
 
-         modifier = Modifier.fillMaxSize().padding(20.dp)
-     ) {
-         // Header Home
-           Row(
-               horizontalArrangement = Arrangement.SpaceBetween,
-               verticalAlignment = Alignment.CenterVertically,
-               modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxSize().padding(20.dp)
+    ) {
+        // Header Home
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()
 
-           ){
-               Column (
-                 verticalArrangement = Arrangement.spacedBy(6.dp)
-               ){
+        ){
+            Column (
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ){
 
-                   Text(
-                       text = "Hi, Angelina \uD83D\uDC4B",
-                       fontSize = 13.sp
-                   )
+                Text(
+                    text = "Hi, Angelina \uD83D\uDC4B",
+                    fontSize = 13.sp
+                )
 
-                   Text(
-                       text = "Welcome back",
-                       fontSize = 17.sp,
-                       fontWeight = FontWeight.Bold
-                   )
-               }
+                Text(
+                    text = "Welcome back",
+                    fontSize = 17.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            }
 
-               Icon(
-                   painter = painterResource(R.drawable.outline_notifications_24),
-                   contentDescription = "Icon",
-                   modifier = Modifier.size(30.dp)
-               )
+            Icon(
+                painter = painterResource(R.drawable.outline_notifications_24),
+                contentDescription = "Icon",
+                modifier = Modifier.size(30.dp)
+            )
 
-           }
-         Spacer(modifier = Modifier.height(16.dp))
+        }
+        Spacer(modifier = Modifier.height(16.dp))
 
-         // From Search
+        // From Search
 
-         Box(
-             modifier = Modifier
-                 .fillMaxWidth()
-                 .height(48.dp)
-                 .background(Color.Gray, shape = RoundedCornerShape(8.dp))
-                 .padding(horizontal = 16.dp),
-             contentAlignment = Alignment.CenterStart
-         ) {
-             Row(verticalAlignment = Alignment.CenterVertically) {
-                 Icon(
-                     imageVector = Icons.Default.Search,
-                     contentDescription = "Search Icon",
-                     tint = Color.White
-                 )
-                 Spacer(modifier = Modifier.width(8.dp))
-                 Text(
-                     text = "Search",
-                     color = Color.White,
-                     fontSize = 16.sp
-                 )
-             }
-         }
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp)
+                .background(Color.Gray, shape = RoundedCornerShape(8.dp))
+                .padding(horizontal = 16.dp),
+            contentAlignment = Alignment.CenterStart
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = Icons.Default.Search,
+                    contentDescription = "Search Icon",
+                    tint = Color.White
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Search",
+                    color = Color.White,
+                    fontSize = 16.sp
+                )
+            }
+        }
 
-         Spacer(modifier = Modifier.height(50.dp))
+        Spacer(modifier = Modifier.height(50.dp))
 
 
-         // List Movie
+        // List Movie
 
-         Row(horizontalArrangement = Arrangement.SpaceBetween,
-             verticalAlignment = Alignment.CenterVertically,
-             modifier = Modifier.fillMaxWidth()) {
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.fillMaxWidth()) {
 
-             Text(
-                 text = "Most Popular",
-                 fontSize = 20.sp,
-                 fontWeight = FontWeight.Bold
-             )
+            Text(
+                text = "Most Popular",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
 
-             Row(horizontalArrangement = Arrangement.SpaceBetween,
-                 verticalAlignment = Alignment.CenterVertically,
+            Row(horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = "Voir Tout",
+                    fontSize = 12.sp,
+                    color = yellow
+                )
+                IconButton(
+                    onClick = {}
                 ) {
-                 Text(
-                     text = "Voir Tout",
-                     fontSize = 12.sp,
-                     color = yellow
-                 )
-                 IconButton(
-                     onClick = {}
-                 ) {
-                     Icon(
-                         painter = painterResource(R.drawable.baseline_keyboard_double_arrow_right_24),
-                         contentDescription = "Icon",
-                         tint = yellow,
-                         modifier = Modifier.size(20.dp)
-                     )
-                 }
-             }
+                    Icon(
+                        painter = painterResource(R.drawable.baseline_keyboard_double_arrow_right_24),
+                        contentDescription = "Icon",
+                        tint = yellow,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
 
 
-         }
-         LazyColumn(
-             modifier = modifier.fillMaxSize(),
-             contentPadding = PaddingValues(10.dp),
-             horizontalAlignment = Alignment.Start,
-             verticalArrangement = Arrangement.spacedBy(
-                 space = 10.dp,
-                 alignment = Alignment.CenterVertically
-             )
-         ) {
-           items(stateResult.mostPopular){
+        }
+        LazyColumn(
+            modifier = modifier.fillMaxSize(),
+            contentPadding = PaddingValues(10.dp),
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.spacedBy(
+                space = 10.dp,
+                alignment = Alignment.CenterVertically
+            )
+        ) {
+            items(stateResult.mostPopular){
 
-                mostPopular : MostPopular ->
-               FilmItem( mostPopular = mostPopular)
+                    mostPopular : MostPopular ->
+                FilmItem( mostPopular = mostPopular){
+                        mostPopular -> onclickOnMostPopularScreen(mostPopular)
+                }
 
-           }
-         }
-     }
+            }
+        }
+    }
 }
