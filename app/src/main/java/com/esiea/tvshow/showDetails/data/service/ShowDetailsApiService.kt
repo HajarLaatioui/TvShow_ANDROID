@@ -7,6 +7,6 @@ import retrofit2.http.Query
 interface ShowDetailsApiService {
     @GET("show-details")
     suspend fun getShowDetails(
-        @Query("id") showId: Int
+        @Query("q") showId: Int
     ): ShowDetailsResponseDto
 }

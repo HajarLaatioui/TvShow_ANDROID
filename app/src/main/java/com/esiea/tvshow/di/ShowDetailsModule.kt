@@ -7,6 +7,7 @@ import com.esiea.tvshow.mostPopular.domain.repository.MostPopularRepository
 import com.esiea.tvshow.showDetails.data.repository.ShowDetailsRepositoryImpl
 import com.esiea.tvshow.showDetails.data.service.ShowDetailsApiService
 import com.esiea.tvshow.showDetails.domain.repository.ShowDetailsRepository
+import com.esiea.tvshow.showDetails.domain.useCases.GetShowDetailsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,6 +34,14 @@ object ShowDetailsModule {
     @Singleton
     fun provideShowDetailsRepository(apiService: ShowDetailsApiService): ShowDetailsRepository {
         return ShowDetailsRepositoryImpl(apiService)
+    }
+
+
+
+    @Provides
+    @Singleton
+    fun provideShowDetailsUseCases(showDetailsRepository: ShowDetailsRepository): GetShowDetailsUseCase {
+        return GetShowDetailsUseCase(showDetailsRepository)
     }
 
 

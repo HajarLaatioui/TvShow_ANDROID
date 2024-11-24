@@ -5,5 +5,4 @@ data class Episode(
     val episode: Int,
     val name: String,
     val season: Int
-
 )

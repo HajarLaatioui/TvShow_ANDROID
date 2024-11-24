@@ -1,76 +1,18 @@
 package com.esiea.tvshow.showDetails.data.dto
 
-import com.esiea.tvshow.showDetails.domain.model.ShowDetails
+
+import com.esiea.tvshow.showDetails.domain.model.ShowDetailsResponse
 import com.google.gson.annotations.SerializedName
 
 data class ShowDetailsResponseDto(
-    @SerializedName("countdown")
-    val countdown: Any?,
-    @SerializedName("country")
-    val country: String,
-    @SerializedName("description")
-    val description: String,
-    @SerializedName("description_source")
-    val descriptionSource: String,
-    @SerializedName("end_date")
-    val endDate: Any?,
-    @SerializedName("genres")
-    val genres: List<String>,
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("image_path")
-    val imagePath: String,
-    @SerializedName("image_thumbnail_path")
-    val imageThumbnailPath: String,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("network")
-    val network: String,
-    @SerializedName("permalink")
-    val permalink: String,
-    @SerializedName("pictures")
-    val pictures: List<String>,
-    @SerializedName("rating")
-    val rating: String,
-    @SerializedName("rating_count")
-    val ratingCount: String,
-    @SerializedName("runtime")
-    val runtime: Int,
-    @SerializedName("start_date")
-    val startDate: String,
-    @SerializedName("status")
-    val status: String,
-    @SerializedName("url")
-    val url: String,
-    @SerializedName("youtube_link")
-    val youtubeLink: Any?,
-    @SerializedName("episodes")
-    val episodes: List<EpisodeDto>
+    @SerializedName("tvShow")
+    val tvShow: TvShowDto
 )
 
 
-fun ShowDetailsResponseDto.toShowDetails(): ShowDetails {
-    return ShowDetails(
-        countdown = this.countdown ?: "No countdown",
-        country = this.country,
-        description = this.description,
-        description_source = this.descriptionSource,
-        end_date = this.endDate,
-        genres = this.genres,
-        id = this.id,
-        image_path = this.imagePath,
-        image_thumbnail_path = this.imageThumbnailPath,
-        name = this.name,
-        network = this.network,
-        permalink = this.permalink,
-        pictures = this.pictures,
-        rating = this.rating,
-        rating_count = this.ratingCount,
-        runtime = this.runtime,
-        start_date = this.startDate,
-        status = this.status,
-        url = this.url,
-        youtube_link = this.youtubeLink ?: "No link",
-        episodes = this.episodes.map { it.toEpisode() }
+fun ShowDetailsResponseDto.toShowDetailsResponse(): ShowDetailsResponse {
+    return ShowDetailsResponse(
+        tvShow = tvShow.toTvShow()
     )
 }
+

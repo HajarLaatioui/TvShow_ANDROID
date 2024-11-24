@@ -1,9 +1,10 @@
 package com.esiea.tvshow.showDetails.presentation.viewmodel
 
-import com.esiea.tvshow.showDetails.domain.model.ShowDetails
+import com.esiea.tvshow.showDetails.domain.model.ShowDetailsResponse
+import com.esiea.tvshow.showDetails.domain.model.TvShow
 
 data class ShowDetailsState(
     val isLoading: Boolean = false,
-    val showDetails: ShowDetails? = null,
+    val tvShow: TvShow? = null,
     val error: String = ""
 )
